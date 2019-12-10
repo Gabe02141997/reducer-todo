@@ -1,6 +1,61 @@
 import React, { useState, useReducer } from 'react'
 import { todoReducer, initialState } from '../reducers/reducer'
 import TodoList from './TodoList'
+import styled from 'styled-components'
+
+// const ButtonContainer = styled.div`
+// display flex;
+// flex-direction: column;
+// justify-content: center;
+// align-content: center;
+// align-items: center; 
+
+
+
+// `
+
+const Input = styled.input`
+padding: 0.5rem 1.2rem;
+margin-bottom: 1rem;
+border: 1px solid black;
+border-radius: 5px;
+
+`
+
+
+
+
+const FormContainer = styled.form`
+
+display: flex;
+flex-direction: column;
+justify-content: center
+align-content: center; `
+
+
+const ButtonStyle = styled.button`
+
+border: none;
+border-radius: 5px;
+color: #fff;
+background: #42f578
+padding: 1rem 2rem; 
+ margin-bottom: 1rem;
+
+
+`
+
+const ItemContainer = styled.div`
+
+display: flex;
+flex-direction: column;
+justify-content: center; 
+max-width: 100%;
+margin: 0 auto;
+
+
+`
+// #42f578
 
 
 const Todoform = () => {
@@ -27,15 +82,18 @@ const Todoform = () => {
     }
 
     return (
-        <div>
+        <FormContainer>
+            <ItemContainer>
             {todoState.todos.map(todo => (
                 <TodoList todo ={todo} dispatch={dispatch} todoState={todo}/> 
             ))}
 
-            <input type ='text' name ='item' value={todo.item} onChange={changeHandler}/>
-            <button type ='submit' onClick={handleSubmit}>Add Todo</button>
-            <button type ='submit' onClick={clearCompleted}>Clear Completed</button>
-        </div>
+            <Input type ='text' name ='item' value={todo.item} onChange={changeHandler}/>
+           
+            <ButtonStyle type ='submit' onClick={handleSubmit}>Add Todo</ButtonStyle>
+            <ButtonStyle type ='submit' onClick={clearCompleted}>Clear Completed</ButtonStyle>
+            </ItemContainer>
+        </FormContainer>
     )
 }
 
